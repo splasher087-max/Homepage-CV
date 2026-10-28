@@ -115,8 +115,46 @@ footer a:hover{color:white}
 @keyframes projectHover{to{transform:translateY(-13px);box-shadow:0 25px 65px #7168e62e}}
 @keyframes contactGlow{to{text-shadow:0 0 55px #a694ff70}}
 @media(prefers-reduced-motion:reduce){.hero-art .orbit,.hero-art .art-core,.hero .gradient,.hero .pulse,.scroll-cue,.hero-area .glow,#om .chip,#cv .feature,#projekter .project-card,#kontakt h2{animation:none!important}}
+/* Interactive 3D processor — layered CSS geometry with no external 3D dependency */
+.chip-stage{--rx:-15deg;--ry:-24deg;--hover-scale:1;--pointer-x:50%;--pointer-y:50%;height:500px;min-width:0;position:relative;display:grid;place-items:center;isolation:isolate;perspective:1050px;cursor:crosshair;outline-offset:8px}
+.chip-stage:focus-visible{outline:2px solid var(--cyan);border-radius:22px}
+.chip-aura{position:absolute;inset:5%;background:radial-gradient(ellipse at var(--pointer-x) var(--pointer-y),#75e9fa45 0%,#7e62d12b 34%,transparent 70%);filter:blur(42px);animation:chipAura 4s ease-in-out infinite alternate}
+.chip-world{position:relative;width:390px;height:390px;transform-style:preserve-3d;transform:rotateX(var(--rx)) rotateY(var(--ry)) scale(var(--hover-scale));transition:transform .22s ease-out;animation:chipFloat 5s ease-in-out infinite alternate;will-change:transform}
+.chip-board{position:absolute;inset:14px;border:1px solid #70b9f67d;border-radius:24px;background:linear-gradient(135deg,#152b48,#111a34 60%,#1b1a40);box-shadow:0 0 0 7px #273657,0 0 0 9px #8c9cff44,0 0 55px #5f7aff42,0 35px 100px #050614;transform-style:preserve-3d;overflow:visible}
+.chip-board:before{content:"";position:absolute;inset:13px;border-radius:13px;border:1px solid #77dce12d;background:repeating-linear-gradient(0deg,transparent 0 34px,#80d6f610 35px 36px),repeating-linear-gradient(90deg,transparent 0 34px,#80d6f610 35px 36px);opacity:.85}
+.chip-board:after{content:"";position:absolute;inset:0;border-radius:24px;pointer-events:none;background:linear-gradient(120deg,transparent 30%,#c2b5ff17 50%,transparent 70%);background-size:250% 100%;animation:chipSheen 5s linear infinite}
+.chip-package{position:absolute;inset:73px;transform:translateZ(52px);transform-style:preserve-3d;filter:drop-shadow(0 22px 12px #0009)}
+.chip-side{position:absolute;inset:0;border-radius:17px;background:#080d20;transform:translateZ(-18px);box-shadow:0 0 0 11px #42567d,0 0 0 13px #88d8ee69}
+.chip-face{position:absolute;inset:0;border-radius:17px;border:2px solid #a3d5f9;background:linear-gradient(135deg,#38528e,#131a3d 36%,#252251 74%,#5a4a8e);box-shadow:inset 0 0 36px #9ba8ff25,0 0 36px #80eaff7a;overflow:hidden}
+.chip-face:before{content:"";position:absolute;inset:-80%;background:conic-gradient(from 90deg,transparent 0 15%,#9bcbff2d 25%,transparent 36% 65%,#bd9aff35 75%,transparent 90%);animation:chipRotate 9s linear infinite}
+.chip-etched{position:absolute;inset:13px;border:1px solid #c2e6ff55;border-radius:10px;display:flex;flex-direction:column;justify-content:center;align-items:center;background:radial-gradient(circle at 50% 20%,#87baff21,transparent 60%);z-index:1}
+.chip-symbol{font:700 84px/1 "Space Grotesk",sans-serif;letter-spacing:-.12em;color:#effaff;text-shadow:0 0 22px #a2efff88}.chip-symbol-dot{color:var(--cyan)}
+.chip-type{font-size:12px;font-weight:700;letter-spacing:.35em;color:#a7eaff;margin-top:15px}.chip-micro{position:absolute;bottom:12px;font-size:7px;letter-spacing:.22em;color:#9eadd9}
+.chip-pins{position:absolute;background:repeating-linear-gradient(90deg,#8fcbef 0 5px,transparent 5px 16px);filter:drop-shadow(0 0 4px #7bcbf7);opacity:.9}
+.pin-top,.pin-bottom{left:66px;right:66px;height:18px}.pin-top{top:56px}.pin-bottom{bottom:56px}
+.pin-left,.pin-right{top:66px;bottom:66px;width:18px;background:repeating-linear-gradient(0deg,#8fcbef 0 5px,transparent 5px 16px)}.pin-left{left:56px}.pin-right{right:56px}
+.trace{position:absolute;height:3px;background:linear-gradient(90deg,transparent,#5b8fd4,#82effa,transparent);background-size:250% 100%;box-shadow:0 0 12px #6ae6ffb0;animation:traceFlow 2.8s linear infinite;opacity:.9}
+.trace-a{width:105px;top:54px;left:18px;transform:rotate(25deg)}.trace-b{width:105px;top:54px;right:18px;transform:rotate(-25deg);animation-delay:-1s}
+.trace-c{width:115px;bottom:52px;left:12px;transform:rotate(-25deg);animation-delay:-.8s}.trace-d{width:115px;bottom:52px;right:12px;transform:rotate(25deg);animation-delay:-1.7s}
+.trace-e{width:100px;top:105px;left:-8px;transform:rotate(90deg);animation-delay:-.3s}.trace-f{width:100px;top:105px;right:-8px;transform:rotate(90deg);animation-delay:-1.3s}
+.trace-g{width:100px;bottom:105px;left:-8px;transform:rotate(90deg);animation-delay:-2s}.trace-h{width:100px;bottom:105px;right:-8px;transform:rotate(90deg);animation-delay:-2.4s}
+.trace-dot{position:absolute;width:9px;height:9px;border-radius:50%;background:#a6faff;box-shadow:0 0 14px 4px #62d8ffb0;animation:chipDot 2s ease-in-out infinite alternate}
+.d1{top:35px;left:35px}.d2{top:35px;right:35px;animation-delay:-.8s}.d3{bottom:35px;left:35px;animation-delay:-1.4s}.d4{bottom:35px;right:35px;animation-delay:-.4s}
+.chip-scan{position:absolute;inset:0;border:1px dashed #a8c9ff3a;border-radius:50%;transform:translateZ(-65px) scale(1.25);animation:chipRotate 28s linear infinite;pointer-events:none}
+.chip-hud{position:absolute;left:3%;right:3%;display:flex;justify-content:space-between;gap:10px;align-items:center;font-size:10px;letter-spacing:.17em;color:#a9bbd7;font-weight:700;z-index:2}
+.hud-top{top:0}.hud-bottom{bottom:0;color:#8299b9}.hud-dot{width:7px;height:7px;background:#7cf6d2;border-radius:50%;box-shadow:0 0 13px #7cf6d2;animation:statusPulse 2s infinite}.hud-code{color:#7bdaef}
+@keyframes chipFloat{from{translate:0 10px}to{translate:0 -17px}}
+@keyframes chipAura{to{opacity:.65;transform:scale(1.2)}}
+@keyframes chipRotate{to{rotate:360deg}}
+@keyframes chipDot{to{opacity:.35;transform:scale(.65)}}
+@keyframes chipSheen{to{background-position:200% 0}}
+@keyframes traceFlow{to{background-position:250% 0}}
+@media(max-width:1050px){.chip-world{width:350px;height:350px}.chip-stage{height:440px}.chip-symbol{font-size:70px}}
+@media(max-width:770px){.hero-art.chip-stage{transform:none;height:345px;margin-top:5px}.chip-world{width:290px;height:290px}.chip-package{inset:59px}.chip-symbol{font-size:60px}.chip-type{font-size:10px}.chip-hud{font-size:8px}.chip-stage{--rx:-14deg;--ry:-19deg}.chip-scan{transform:translateZ(-50px) scale(1.14)}}
+@media(max-width:480px){.hero-art.chip-stage{height:300px;margin:18px 0 4px}.chip-world{width:255px;height:255px}.chip-board{inset:10px}.chip-package{inset:49px}.chip-symbol{font-size:51px}.chip-type{font-size:9px;margin-top:8px}.chip-micro{font-size:5px}.chip-hud{font-size:7px}.chip-pins{opacity:.6}.pin-top,.pin-bottom{left:50px;right:50px}.pin-left,.pin-right{top:50px;bottom:50px}}
+@media(prefers-reduced-motion:reduce){.chip-world,.chip-aura,.chip-board:after,.chip-face:before,.chip-scan,.trace,.trace-dot,.hud-dot{animation:none!important;transition:none!important}.chip-world{transform:rotateX(-14deg) rotateY(-20deg)}}
 /* Stronger premium motion: more energy without overwhelming the content */
-.hero-art{animation:heroSway 6s ease-in-out infinite alternate}
+.hero-art:not(.chip-stage){animation:heroSway 6s ease-in-out infinite alternate}
 .hero-art .art-rings{animation:float 5.5s ease-in-out infinite}
 .hero-art .orbit{animation:orbitSwing 4.5s ease-in-out infinite alternate}
 .hero-art .art-core{animation:planetPulse 2.8s ease-in-out infinite alternate}
@@ -222,7 +260,20 @@ html.js-animate .is-active .section-head .small-line{transform:scaleX(1)}
 <p class="intro">Jeg interesserer mig for teknologi, computere og idéer, der bliver til virkelighed. Jeg læser til datatekniker / IT-supporter på EUC Syd i Sønderborg – og elsker at finde løsninger, der virker.</p>
 <div class="actions"><a class="btn btn-primary" href="./cv.html">Udforsk mit CV <span aria-hidden="true">↗</span></a><a class="btn btn-ghost" href="#projekter">Mine projekter <span aria-hidden="true">↓</span></a></div>
 </div>
-<div class="hero-art" aria-hidden="true"><div class="art-rings"><div class="art-core"></div></div><div class="orbit"></div><div class="art-label">Nysgerrighed × teknologi<span>Fra idé til løsning.</span></div></div>
+<div class="hero-art chip-stage" aria-label="Interaktiv tredimensionel processor. Bevæg musen hen over chippen for at dreje den." role="img" tabindex="0">
+  <div class="chip-aura" aria-hidden="true"></div>
+  <div class="chip-hud hud-top" aria-hidden="true"><span class="hud-dot"></span> SYSTEM ONLINE <span class="hud-code">01 / CORE</span></div>
+  <div class="chip-world" aria-hidden="true">
+    <div class="chip-board">
+      <div class="trace trace-a"></div><div class="trace trace-b"></div><div class="trace trace-c"></div><div class="trace trace-d"></div><div class="trace trace-e"></div><div class="trace trace-f"></div><div class="trace trace-g"></div><div class="trace trace-h"></div>
+      <div class="trace-dot d1"></div><div class="trace-dot d2"></div><div class="trace-dot d3"></div><div class="trace-dot d4"></div>
+      <div class="chip-package"><div class="chip-side"></div><div class="chip-face"><div class="chip-etched"><span class="chip-symbol">JG<span class="chip-symbol-dot">.</span></span><span class="chip-type">TECH / 001</span><span class="chip-micro">INNOVATION ENGINE</span></div></div></div>
+      <div class="chip-pins pin-top"></div><div class="chip-pins pin-bottom"></div><div class="chip-pins pin-left"></div><div class="chip-pins pin-right"></div>
+    </div>
+    <div class="chip-scan"></div>
+  </div>
+  <div class="chip-hud hud-bottom" aria-hidden="true"><span>INTERAKTIV PROCESSOR</span><span>BEVÆG MUSEN ↗</span></div>
+</div>
 </div>
 <a class="scroll-cue" href="#om">Scroll for at udforske</a>
 </section>
@@ -368,6 +419,41 @@ if(!reduce){
   window.addEventListener('resize',requestMotion,{passive:true});
   requestMotion();
 }
+// Interactive processor: pointer tilt, touch tilt and keyboard accessibility.
+(function(){
+  const stage=document.querySelector('.chip-stage');
+  if(!stage)return;
+  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduced)return;
+  let targetX=-15,targetY=-24,currentX=-15,currentY=-24,raf=0,active=true;
+  const apply=()=>{
+    raf=0;
+    currentX+=(targetX-currentX)*.13;currentY+=(targetY-currentY)*.13;
+    stage.style.setProperty('--rx',currentX.toFixed(2)+'deg');
+    stage.style.setProperty('--ry',currentY.toFixed(2)+'deg');
+    if(Math.abs(currentX-targetX)>.1||Math.abs(currentY-targetY)>.1)raf=requestAnimationFrame(apply);
+  };
+  const schedule=()=>{if(!raf)raf=requestAnimationFrame(apply)};
+  stage.addEventListener('pointermove',e=>{
+    const r=stage.getBoundingClientRect(),nx=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width)),ny=Math.max(0,Math.min(1,(e.clientY-r.top)/r.height));
+    targetX=22-ny*44;targetY=-34+nx*68;
+    stage.style.setProperty('--pointer-x',(nx*100).toFixed(1)+'%');
+    stage.style.setProperty('--pointer-y',(ny*100).toFixed(1)+'%');
+    stage.style.setProperty('--hover-scale','1.06');
+    schedule();
+  },{passive:true});
+  stage.addEventListener('pointerleave',()=>{targetX=-15;targetY=-24;stage.style.setProperty('--hover-scale','1');schedule()});
+  stage.addEventListener('keydown',e=>{
+    if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home'].includes(e.key))return;
+    e.preventDefault();
+    if(e.key==='Home'){targetX=-15;targetY=-24;}
+    if(e.key==='ArrowLeft')targetY=Math.max(-55,targetY-9);
+    if(e.key==='ArrowRight')targetY=Math.min(55,targetY+9);
+    if(e.key==='ArrowUp')targetX=Math.max(-40,targetX-9);
+    if(e.key==='ArrowDown')targetX=Math.min(40,targetX+9);
+    schedule();
+  });
+})();
 document.querySelectorAll('.feature').forEach(el=>el.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect();el.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');el.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%');}));
 if(reduce)return;
 const canvas=document.getElementById('particles'),ctx=canvas.getContext('2d');if(!ctx)return;
