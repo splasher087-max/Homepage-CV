@@ -1,24 +1,63 @@
 <!doctype html>
-<html lang="da"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Johann K. Geertz – IT-supporter, projekter og CV."><title>Johann K. Geertz | IT-Supporter</title>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#151d26">
+<meta name="description" content="Johann K. Geertz – datatekniker / IT-supporter. Læs om mine interesser inden for IT, netværk og hardware, og se mit CV.">
+<title>Johann K. Geertz | IT-supporter</title>
 <style>
-:root{--blue:#477bb8;--dark:#18283a;--grey:#5c6c7b;--line:#e2e8f0;font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f8fafc;color:var(--dark);line-height:1.65}a{text-decoration:none;color:inherit}a:focus-visible{outline:3px solid var(--blue);outline-offset:4px}
-.wrap{max-width:1060px;margin:auto;padding:0 28px}header{background:white;border-bottom:1px solid var(--line)}.nav{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}.brand{font-size:18px;font-weight:800;letter-spacing:-.025em}.brand span{color:var(--blue)}nav{display:flex;align-items:center;gap:25px;font-size:14px;font-weight:600}nav a:hover{color:var(--blue)}.button{display:inline-flex;align-items:center;justify-content:center;min-height:47px;padding:11px 21px;border-radius:8px;background:var(--blue);color:white;font-size:14px;font-weight:700;transition:background .15s}.button:hover{background:#315e95}.button.alt{background:white;color:var(--dark);border:1px solid #cdd9e5}.button.alt:hover{background:#eef3f8}
-.hero{padding:110px 0 96px;display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:55px}.eyebrow{text-transform:uppercase;font-size:12px;letter-spacing:.19em;font-weight:750;color:var(--blue)}h1{font-size:clamp(43px,6vw,72px);line-height:1.13;letter-spacing:-.055em;margin:16px 0 20px}h1 span{color:var(--blue)}.lead{font-size:19px;color:var(--grey);max-width:600px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
-.profile{border:1px solid #dbe4ee;border-radius:20px;background:white;box-shadow:0 22px 60px #19345110;padding:34px;text-align:left}.profile .symbol{height:65px;width:65px;border-radius:16px;display:grid;place-items:center;background:#eaf2fa;color:var(--blue);font-size:30px}.profile h2{font-size:22px;margin:24px 0 2px}.profile p{color:var(--grey);margin:0}.status{display:flex;align-items:center;gap:8px;margin-top:20px;border-top:1px solid var(--line);padding-top:19px;color:#527195;font-size:13px;font-weight:650}.status:before{content:"";width:8px;height:8px;background:#5bb88a;border-radius:50%}
-section{padding:50px 0 75px}.sectiontitle{margin-bottom:28px}h2{font-size:30px;letter-spacing:-.035em;line-height:1.2;margin:6px 0 10px}.sectiontitle p{margin:0;color:var(--grey)}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{border:1px solid var(--line);border-radius:14px;padding:26px;background:white;box-shadow:0 7px 25px #19345108}.card .icon{font-size:25px}.card h3{font-size:17px;margin:19px 0 9px}.card p{font-size:14px;color:var(--grey);margin:0}
-.cvbanner{display:flex;align-items:center;justify-content:space-between;gap:30px;padding:37px;background:#eaf2fa;border:1px solid #d8e5f2;border-radius:16px}.cvbanner p{color:var(--grey);margin-bottom:0;max-width:610px}
-footer{border-top:1px solid var(--line);padding:30px 0;color:var(--grey);font-size:13px}.foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}footer a{color:var(--blue)}
-@media(max-width:780px){.hero{grid-template-columns:1fr;padding:70px 0;gap:32px}.profile{max-width:440px}.grid{grid-template-columns:1fr}.cvbanner{align-items:start;flex-direction:column}}@media(max-width:540px){.wrap{padding:0 20px}.nav{padding:18px 0;align-items:start;flex-direction:column;gap:10px}nav{gap:16px;flex-wrap:wrap}.hero{padding:55px 0}.lead{font-size:17px}section{padding:35px 0}}
-</style></head><body>
-<header><div class="wrap nav"><a class="brand" href="./index.html">Johann K. <span>Geertz</span></a><nav aria-label="Navigation"><a href="#about">Om mig</a><a href="#projects">Fokusområder</a><a href="https://github.com/splasher087-max" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="./cv.html">CV</a></nav></div></header>
+:root{color-scheme:dark;--bg:#151d26;--surface:#202b35;--surface2:#26343d;--text:#f3f0e9;--muted:#b9c2c6;--warm:#e8c49a;--warm2:#f0dbc3;--border:#3b4950;--blue:#95b5c5;--shadow:0 18px 60px #090f1760;font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;color:var(--text);background:radial-gradient(ellipse at 78% 4%,#36434b 0%,transparent 37%),radial-gradient(ellipse at 0% 42%,#222f37 0%,transparent 46%),var(--bg);line-height:1.7}
+a{color:inherit;text-decoration:none}a:focus-visible{outline:3px solid var(--warm);outline-offset:5px}button{font:inherit}
+.wrap{max-width:1090px;padding:0 28px;margin:auto}
+header{border-bottom:1px solid #ffffff12;background:#141d25a8;backdrop-filter:blur(12px)}
+.nav{display:flex;align-items:center;justify-content:space-between;min-height:82px;gap:20px;flex-wrap:wrap}
+.brand{font-weight:750;letter-spacing:-.03em;font-size:19px}.brand span{color:var(--warm)}
+nav{display:flex;align-items:center;gap:27px;flex-wrap:wrap;font-size:14px;color:var(--muted)}nav a:hover,footer a:hover{color:var(--warm)}
+.hero{padding:115px 0 100px;display:grid;grid-template-columns:1.23fr .77fr;gap:62px;align-items:center}
+.eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--warm);font-weight:750}
+h1{font-size:clamp(44px,6.7vw,77px);line-height:1.13;letter-spacing:-.065em;margin:15px 0 24px;font-weight:730}h1 em{font-style:normal;color:var(--warm)}
+.lead{font-size:18px;max-width:570px;color:var(--muted);margin:0}
+.actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:34px}
+.button{display:inline-flex;align-items:center;justify-content:center;padding:12px 21px;min-height:49px;border-radius:11px;background:var(--warm);color:#1b252a;font-size:14px;font-weight:750;transition:transform .2s,background .2s}
+.button:hover{transform:translateY(-2px);background:var(--warm2)}
+.button.secondary{background:transparent;color:var(--text);border:1px solid #82929a65}.button.secondary:hover{background:#ffffff0a}
+.profile{background:linear-gradient(145deg,#293742,#212d36);border:1px solid #ffffff20;border-radius:24px;padding:35px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.profile:after{content:"";position:absolute;width:220px;height:220px;border-radius:50%;background:#e8c49a0d;top:-105px;right:-90px;pointer-events:none}
+.mark{width:67px;height:67px;display:grid;place-items:center;border-radius:18px;background:#e8c49a1b;border:1px solid #e8c49a45;color:var(--warm);font-size:30px}
+.profile h2{font-size:24px;letter-spacing:-.035em;margin:28px 0 7px}.profile p{margin:0;color:var(--muted)}.profile .small{color:var(--blue);font-size:14px}
+.profile .divider{height:1px;background:var(--border);margin:25px 0 20px}
+.status{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--warm2)}.status:before{content:"";width:8px;height:8px;flex:none;border-radius:50%;background:#a6c5a6;box-shadow:0 0 12px #a6c5a650}
+section{padding:48px 0 75px}
+.sectionhead{margin-bottom:30px}h2{font-size:clamp(26px,3vw,35px);line-height:1.22;letter-spacing:-.04em;font-weight:680;margin:9px 0 13px}.sectionhead p{color:var(--muted);margin:0}
+.about-text{max-width:810px;color:var(--muted);font-size:17px;margin:0}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.card{background:#202b35c9;border:1px solid var(--border);border-radius:18px;padding:29px 25px;box-shadow:0 9px 30px #00000019;transition:transform .2s,border-color .2s}
+.card:hover{transform:translateY(-3px);border-color:#bca18180}
+.card .icon{display:grid;place-items:center;width:48px;height:48px;background:#e8c49a13;border-radius:13px;color:var(--warm);font-size:23px}
+.card h3{font-size:17px;line-height:1.35;margin:22px 0 10px}.card p{color:var(--muted);font-size:14px;margin:0}
+.cvbanner{padding:38px 42px;background:linear-gradient(110deg,#2e3d46,#26343d);border:1px solid #e8c49a36;border-radius:22px;display:flex;justify-content:space-between;align-items:center;gap:30px;box-shadow:var(--shadow)}
+.cvbanner p{color:var(--muted);margin:0;max-width:580px}
+footer{border-top:1px solid #ffffff18;color:var(--muted);padding:30px 0;font-size:13px}.foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media(max-width:790px){.hero{grid-template-columns:1fr;padding:75px 0 55px;gap:38px}.profile{max-width:500px}.grid{grid-template-columns:1fr}.cvbanner{flex-direction:column;align-items:flex-start}}
+@media(max-width:520px){.wrap{padding:0 20px}.nav{align-items:flex-start;flex-direction:column;gap:12px;padding:20px 0}nav{gap:17px}.hero{padding:58px 0 45px}.lead{font-size:16px}section{padding:35px 0 55px}.cvbanner{padding:29px 25px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav"><a class="brand" href="./index.html">Johann K. <span>Geertz</span></a><nav aria-label="Navigation"><a href="#om-mig">Om mig</a><a href="#fokusomraader">Fokusområder</a><a href="https://github.com/splasher087-max" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="./cv.html">Mit CV</a></nav></div></header>
 <main class="wrap">
-<div class="hero"><div><div class="eyebrow">IT-supporter · Teknik · Udvikling</div><h1>Hej, jeg hedder<br><span>Johann.</span></h1><p class="lead">Velkommen til min personlige hjemmeside. Jeg interesserer mig for computere, IT-infrastruktur og praktisk problemløsning.</p><div class="actions"><a class="button" href="./cv.html">Se mit CV ↗</a><a class="button alt" href="#projects">Læs mere ↓</a></div></div>
-<div class="profile"><div class="symbol" aria-hidden="true">⌘</div><h2>Johann K. Geertz</h2><p>Datatekniker / IT-Supporter</p><p>EUC Syd · Sønderborg</p><div class="status">Interesse for IT, netværk og systemer</div></div></div>
-<section id="about"><div class="sectiontitle"><div class="eyebrow">Om mig</div><h2>Forstå teknologien. Find løsninger.</h2></div><p style="max-width:780px;color:var(--grey)">Jeg har længe interesseret mig for computere og hardware. Jeg lærer bedst gennem praktiske opgaver – fra at samle computere til at konfigurere netværk og servere. Min baggrund kombinerer håndværksmæssig erfaring med interesse for IT.</p></section>
-<section id="projects"><div class="sectiontitle"><div class="eyebrow">Faglige interesser</div><h2>Mine fokusområder</h2><p>Områder, hvor jeg lærer og opbygger praktisk erfaring.</p></div>
-<div class="grid"><article class="card"><div class="icon">🖧</div><h3>Netværk og IT-infrastruktur</h3><p>IPv4, IPv6, Routing, Windows Server, Active Directory und Linux.</p></article><article class="card"><div class="icon">⌨</div><h3>Programmering</h3><p>C#-øvelser, logisk tænkning og egne webprojekter med HTML, CSS og JavaScript.</p></article><article class="card"><div class="icon">⚙</div><h3>Hardware og fejlfinding</h3><p>Computerkomponenter, systemkonfiguration og teknisk fejlfinding.</p></article></div></section>
-<section><div class="cvbanner"><div><div class="eyebrow">Mit CV</div><h2>Uddannelse og erhvervserfaring</h2><p>Du kan se mit fulde CV med uddannelse, erhvervserfaring, kompetencer og kontaktoplysninger på en separat side.</p></div><a class="button" href="./cv.html">Se CV ↗</a></div></section>
-</main><footer><div class="wrap foot"><span>© Johann K. Geertz</span><span><a href="./cv.html">CV</a> · <a href="https://github.com/splasher087-max" target="_blank" rel="noopener noreferrer">GitHub</a></span></div></footer>
+<div class="hero"><div><div class="eyebrow">Datatekniker · IT-supporter · Teknik</div><h1>Hej, jeg hedder<br><em>Johann.</em></h1><p class="lead">Velkommen til min personlige hjemmeside. Jeg interesserer mig for computere, IT-infrastruktur og praktisk problemløsning – og jeg kan godt lide at finde ud af, hvordan teknologien fungerer.</p><div class="actions"><a class="button" href="./cv.html">Se mit CV ↗</a><a class="button secondary" href="#fokusomraader">Læs mere ↓</a></div></div>
+<aside class="profile" aria-label="Kort præsentation"><div class="mark" aria-hidden="true">⌘</div><h2>Johann K. Geertz</h2><p>Datatekniker / IT-supporter</p><p class="small">EUC Syd · Sønderborg</p><div class="divider"></div><div class="status">Interesse for IT, netværk og hardware</div></aside></div>
+<section id="om-mig"><div class="sectionhead"><div class="eyebrow">Om mig</div><h2>Nysgerrighed og praktisk erfaring</h2></div><p class="about-text">Jeg har stor interesse for IT og teknik og arbejder gerne med computere og hardware. Jeg lærer bedst gennem praktiske opgaver og fejlfinding. Min baggrund fra håndværksfagene har givet mig en solid forståelse for præcision, ansvar og problemløsning, som jeg tager med ind i IT-verdenen.</p></section>
+<section id="fokusomraader"><div class="sectionhead"><div class="eyebrow">Faglige interesser</div><h2>Mine fokusområder</h2><p>Områder, hvor jeg udvikler mine kompetencer og får praktisk erfaring.</p></div>
+<div class="grid">
+<article class="card"><div class="icon" aria-hidden="true">⌘</div><h3>Netværk og IT-infrastruktur</h3><p>IPv4, IPv6, routing, Windows Server, Active Directory og Linux.</p></article>
+<article class="card"><div class="icon" aria-hidden="true">{ }</div><h3>Programmering</h3><p>C#-øvelser, logisk tænkning og webprojekter med HTML, CSS og JavaScript.</p></article>
+<article class="card"><div class="icon" aria-hidden="true">⚙</div><h3>Hardware og fejlfinding</h3><p>Computerkomponenter, systemkonfiguration og teknisk problemløsning.</p></article>
+</div></section>
+<section><div class="cvbanner"><div><div class="eyebrow">Mit CV</div><h2>Uddannelse og erhvervserfaring</h2><p>Se mit originale CV med uddannelse, erhvervserfaring, kompetencer og kontaktoplysninger. CV'et åbnes på sin egen side med det oprindelige PDF-layout.</p></div><a class="button" href="./cv.html">Åbn mit CV ↗</a></div></section>
+</main>
+<footer><div class="wrap foot"><span>© Johann K. Geertz</span><span><a href="./cv.html">Mit CV</a> · <a href="https://github.com/splasher087-max" target="_blank" rel="noopener noreferrer">GitHub</a></span></div></footer>
 </body></html>
