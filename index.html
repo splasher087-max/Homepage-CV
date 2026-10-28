@@ -115,6 +115,24 @@ footer a:hover{color:white}
 @keyframes projectHover{to{transform:translateY(-13px);box-shadow:0 25px 65px #7168e62e}}
 @keyframes contactGlow{to{text-shadow:0 0 55px #a694ff70}}
 @media(prefers-reduced-motion:reduce){.hero-art .orbit,.hero-art .art-core,.hero .gradient,.hero .pulse,.scroll-cue,.hero-area .glow,#om .chip,#cv .feature,#projekter .project-card,#kontakt h2{animation:none!important}}
+/* Stronger premium motion: more energy without overwhelming the content */
+.hero-art{animation:heroSway 6s ease-in-out infinite alternate}
+.hero-art .art-rings{animation:float 5.5s ease-in-out infinite}
+.hero-art .orbit{animation:orbitSwing 4.5s ease-in-out infinite alternate}
+.hero-art .art-core{animation:planetPulse 2.8s ease-in-out infinite alternate}
+.hero .gradient{animation:gradientTravel 3.2s ease-in-out infinite alternate}
+.hero-area .glow.one{animation:drift 6.5s ease-in-out infinite alternate}
+.hero-area .glow.two{animation:drift 8s ease-in-out infinite alternate-reverse}
+@keyframes heroSway{from{translate:0 8px}to{translate:0 -16px}}
+@keyframes lineFlow{from{background-position:0% 50%}to{background-position:200% 50%}}
+.scroll-progress{background:linear-gradient(90deg,var(--cyan),var(--violet),var(--pink),var(--cyan));background-size:200% 100%;animation:lineFlow 4s linear infinite}
+#om.is-active .chip{animation:chipShine 1.8s ease-in-out infinite alternate}
+#cv.is-active .feature{animation:cvAura 2.6s ease-in-out infinite alternate}
+#projekter.is-active .project-card:first-child{animation:projectHover 2.8s ease-in-out infinite alternate}
+#projekter.is-active .project-card:nth-child(2){animation:projectHover 3.2s ease-in-out -1.5s infinite alternate}
+#kontakt.is-active h2{animation:contactGlow 2.2s ease-in-out infinite alternate}
+@media(max-width:770px){.hero-art{animation:heroSway 6s ease-in-out infinite alternate}}
+@media(prefers-reduced-motion:reduce){.hero-art,.scroll-progress{animation:none!important}}
 /* Scroll-driven chapter motion: continuously follows scroll, not one-time reveals */
 html.scroll-motion [data-scene] [data-reveal]{
   opacity:var(--scene-opacity,1)!important;
