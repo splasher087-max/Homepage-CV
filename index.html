@@ -90,6 +90,31 @@ footer a:hover{color:white}
 @media(max-width:480px){.topbar{align-items:flex-start}.logo{font-size:17px}.nav{gap:10px}.nav a:nth-child(2){display:none}.hero h1{font-size:clamp(62px,14vw,83px)}.hero .intro{font-size:16px}.hero-art{margin-top:-35px;margin-bottom:-15px}.hero-area{min-height:0}.section-title{font-size:clamp(48px,12vw,68px)}.socials a{font-size:12px;padding:10px 14px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}[data-reveal]{opacity:1;transform:none}#particles{display:none}}
 
+/* Strong, unmistakable motion — hero, background, and each chapter */
+.hero-art .orbit{animation:orbitSwing 7s ease-in-out infinite alternate}
+.hero-art .art-core{animation:planetPulse 4.5s ease-in-out infinite alternate}
+.hero .gradient{background-size:240% 100%;animation:gradientTravel 5s ease-in-out infinite alternate}
+.hero .pulse{animation:statusPulse 2s ease-in-out infinite}
+.scroll-cue{animation:cueBob 1.8s ease-in-out infinite}
+.hero-area .glow.one{animation:drift 9s ease-in-out infinite alternate}
+.hero-area .glow.two{animation:drift 12s ease-in-out infinite alternate-reverse}
+@keyframes orbitSwing{from{transform:rotate(-29deg) scale(.94)}to{transform:rotate(20deg) scale(1.1)}}
+@keyframes planetPulse{from{filter:brightness(.85) saturate(1);box-shadow:inset -24px -26px 45px #090b2988,0 0 55px #877de86b,0 0 90px #6a6ecc32}to{filter:brightness(1.22) saturate(1.2);box-shadow:inset -24px -26px 45px #090b2988,0 0 135px #877de8b0,0 0 200px #6a6ecc70}}
+@keyframes gradientTravel{from{background-position:0% 50%}to{background-position:100% 50%}}
+@keyframes statusPulse{50%{box-shadow:0 0 0 11px #83f0dc12,0 0 35px #83f0dcb0;transform:scale(1.2)}}
+@keyframes cueBob{50%{transform:translate(-50%,9px);opacity:.55}}
+/* Each section's ambient accent responds to scrolling */
+[data-scene]{--depth:0;--light:0}
+#om.is-active .chip{animation:chipShine 3s ease-in-out infinite alternate}
+#cv.is-active .feature{animation:cvAura 4s ease-in-out infinite alternate}
+#projekter.is-active .project-card:first-child{animation:projectHover 4s ease-in-out infinite alternate}
+#projekter.is-active .project-card:nth-child(2){animation:projectHover 4s ease-in-out -2s infinite alternate}
+#kontakt.is-active h2{animation:contactGlow 3.5s ease-in-out infinite alternate}
+@keyframes chipShine{to{border-color:#79e5ef88;box-shadow:0 0 18px #79e5ef15}}
+@keyframes cvAura{to{box-shadow:0 25px 95px #8b6bff50;border-color:#c7b4ff90}}
+@keyframes projectHover{to{transform:translateY(-13px);box-shadow:0 25px 65px #7168e62e}}
+@keyframes contactGlow{to{text-shadow:0 0 55px #a694ff70}}
+@media(prefers-reduced-motion:reduce){.hero-art .orbit,.hero-art .art-core,.hero .gradient,.hero .pulse,.scroll-cue,.hero-area .glow,#om .chip,#cv .feature,#projekter .project-card,#kontakt h2{animation:none!important}}
 /* Scroll-driven chapter motion: continuously follows scroll, not one-time reveals */
 html.scroll-motion [data-scene] [data-reveal]{
   opacity:var(--scene-opacity,1)!important;
@@ -290,6 +315,40 @@ if(!reduce){
   // Use the existing throttled scroll listener for both progress and chapter motion.
   updateProgress=function(){oldUpdate();updateSceneMotion();};
   updateSceneMotion();
+}
+// Independent scroll driver: does not depend on IntersectionObserver or one-time triggers.
+if(!reduce){
+  let motionQueued=false;
+  function syncScroll(){
+    motionQueued=false;
+    const vh=window.innerHeight;
+    chapters.forEach(scene=>{
+      const rect=scene.getBoundingClientRect();
+      const isNear=rect.top<vh*.9&&rect.bottom>vh*.08;
+      scene.classList.toggle('is-active',isNear);
+      const t=Math.max(0,Math.min(1,(vh*.92-rect.top)/(vh*.65)));
+      const eased=t*t*(3-2*t);
+      scene.querySelectorAll('[data-reveal]').forEach((el,i)=>{
+        const q=Math.max(0,Math.min(1,(eased-i*.075)/(1-i*.075)));
+        const p=q*q*(3-2*q),inv=1-p;
+        let x=0,y=inv*110,s=.78+.22*p,r=0;
+        if(scene.id==='om'){x=(i%2?-1:1)*inv*125;y=inv*35;s=1;}
+        if(scene.id==='cv'){y=inv*175;s=.7+.3*p;}
+        if(scene.id==='projekter'){x=(i%2?-1:1)*inv*80;y=inv*165;r=(i%2?-1:1)*inv*9;}
+        if(scene.id==='kontakt'){y=inv*125;s=.6+.4*p;}
+        el.style.setProperty('--scene-opacity',String(.05+.95*p));
+        el.style.setProperty('--scene-blur',(inv*11)+'px');
+        el.style.setProperty('--scene-x',x+'px');
+        el.style.setProperty('--scene-y',y+'px');
+        el.style.setProperty('--scene-scale',String(s));
+        el.style.setProperty('--scene-rotate',r+'deg');
+      });
+    });
+  }
+  function requestMotion(){if(!motionQueued){motionQueued=true;requestAnimationFrame(syncScroll);}}
+  window.addEventListener('scroll',requestMotion,{passive:true});
+  window.addEventListener('resize',requestMotion,{passive:true});
+  requestMotion();
 }
 document.querySelectorAll('.feature').forEach(el=>el.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect();el.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');el.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%');}));
 if(reduce)return;
