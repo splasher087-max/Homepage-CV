@@ -115,6 +115,24 @@ footer a:hover{color:white}
 @keyframes projectHover{to{transform:translateY(-13px);box-shadow:0 25px 65px #7168e62e}}
 @keyframes contactGlow{to{text-shadow:0 0 55px #a694ff70}}
 @media(prefers-reduced-motion:reduce){.hero-art .orbit,.hero-art .art-core,.hero .gradient,.hero .pulse,.scroll-cue,.hero-area .glow,#om .chip,#cv .feature,#projekter .project-card,#kontakt h2{animation:none!important}}
+/* Accessible contact form, matched to the dark glass interface */
+.contact-action{display:flex;justify-content:center}
+.contact-action button{font:inherit;cursor:pointer}
+.contact-form-wrap{width:min(100%,650px);margin:28px auto 0;text-align:left}
+.contact-form-wrap[hidden]{display:none!important}
+.contact-form{padding:clamp(20px,4vw,34px);border:1px solid #9dacf83b;border-radius:24px;background:linear-gradient(145deg,#18203acb,#0d1427eb);box-shadow:0 25px 85px #0307168c,0 0 70px #8e76ff0d;display:flex;flex-direction:column;gap:19px;animation:formEnter .45s cubic-bezier(.22,1,.36,1) both}
+.contact-form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.contact-form label{display:flex;flex-direction:column;gap:8px;font-size:12px;letter-spacing:.06em;font-weight:700;color:#cdd8ef}
+.contact-form input:not([type=hidden]),.contact-form textarea{width:100%;border:1px solid #a7b9ee38;border-radius:12px;background:#0a1124;color:#f5f7ff;padding:15px 16px;font:400 15px/1.5 "DM Sans",sans-serif;outline:none;transition:border-color .2s,box-shadow .2s}
+.contact-form textarea{resize:vertical;min-height:135px}
+.contact-form input:focus,.contact-form textarea:focus{border-color:#8be5f5;box-shadow:0 0 0 3px #8be5f523}
+.contact-form input::placeholder,.contact-form textarea::placeholder{color:#8290a9}
+.contact-form .contact-submit{align-self:flex-start;cursor:pointer;font:inherit}
+.contact-form .contact-privacy{margin:0;color:#8d9bb4;font-size:11px;line-height:1.6;max-width:none;text-align:left}
+.contact-form .contact-honey{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;opacity:0!important}
+@keyframes formEnter{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(max-width:540px){.contact-form-row{grid-template-columns:1fr}.contact-form .contact-submit{width:100%;justify-content:center}}
+@media(prefers-reduced-motion:reduce){.contact-form{animation:none}}
 /* Interactive 3D processor — layered CSS geometry with no external 3D dependency */
 .chip-stage{--rx:-15deg;--ry:-24deg;--hover-scale:1;--pointer-x:50%;--pointer-y:50%;height:500px;min-width:0;position:relative;display:grid;place-items:center;isolation:isolate;perspective:1050px;cursor:crosshair;outline-offset:8px}
 .chip-stage:focus-visible{outline:2px solid var(--cyan);border-radius:22px}
@@ -303,7 +321,19 @@ html.js-animate .is-active .section-head .small-line{transform:scaleX(1)}
 </div>
 </section>
 <section class="contact-panel" id="kontakt" data-scene="04">
-<div data-reveal="scale"><div class="section-head" style="justify-content:center"><span class="number">04</span><span class="small-line"></span><span class="kicker">Kontakt</span></div><h2>Skal vi <span style="background:linear-gradient(100deg,var(--cyan),var(--violet));background-clip:text;-webkit-background-clip:text;color:transparent">snakke?</span></h2><p>Har du en idé, et spørgsmål eller vil du bare sige hej? Du er altid velkommen til at skrive.</p><a class="btn btn-primary" href="mailto:geertzjohann@gmail.com">Send mig en mail <span aria-hidden="true">↗</span></a></div>
+<div data-reveal="scale"><div class="section-head" style="justify-content:center"><span class="number">04</span><span class="small-line"></span><span class="kicker">Kontakt</span></div><h2>Skal vi <span style="background:linear-gradient(100deg,var(--cyan),var(--violet));background-clip:text;-webkit-background-clip:text;color:transparent">snakke?</span></h2><p>Har du en idé, et spørgsmål eller vil du bare sige hej? Du er altid velkommen til at skrive.</p><div class="contact-action"><button class="btn btn-primary" type="button" id="contact-open" aria-expanded="false" aria-controls="contact-form-wrap">Send mig en besked <span aria-hidden="true">↗</span></button></div>
+<div class="contact-form-wrap" id="contact-form-wrap" hidden>
+  <form class="contact-form" action="https://formsubmit.co/geertzjohann@gmail.com" method="POST">
+    <input type="hidden" name="_subject" value="Ny besked fra johann.dk">
+    <input type="hidden" name="_captcha" value="true">
+    <input type="hidden" name="_template" value="table">
+    <input type="text" name="_honey" class="contact-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="contact-form-row"><label>Dit navn<input type="text" name="name" placeholder="Hvad hedder du?" required maxlength="100" autocomplete="name"></label><label>Din e-mail<input type="email" name="email" placeholder="din@email.dk" required maxlength="200" autocomplete="email"></label></div>
+    <label>Din besked<textarea name="message" rows="5" placeholder="Hvad vil du gerne skrive?" required maxlength="5000"></textarea></label>
+    <button class="btn btn-primary contact-submit" type="submit">Send besked <span aria-hidden="true">↗</span></button>
+    <p class="contact-privacy">Beskeden sendes via FormSubmit til min e-mail. Ved afsendelse behandles dine oplysninger af FormSubmit. Første gang skal jeg aktivere modtagelsen via en bekræftelsesmail.</p>
+  </form>
+</div></div>
 <div class="socials">
 <a href="https://www.linkedin.com/in/johann-geertz-553067288/" target="_blank" rel="noopener noreferrer" data-reveal="pop" style="--delay:110ms">LinkedIn <span aria-hidden="true">↗</span></a>
 <a href="https://www.instagram.com/papageertz/" target="_blank" rel="noopener noreferrer" data-reveal="pop" style="--delay:200ms">Instagram <span aria-hidden="true">↗</span></a>
@@ -318,6 +348,18 @@ html.js-animate .is-active .section-head .small-line{transform:scaleX(1)}
 (function(){
 'use strict';
 document.getElementById('year').textContent=new Date().getFullYear();
+const contactButton=document.getElementById('contact-open');
+const contactWrap=document.getElementById('contact-form-wrap');
+if(contactButton&&contactWrap){
+  contactButton.addEventListener('click',()=>{
+    const opening=contactWrap.hidden;
+    contactWrap.hidden=!opening;
+    contactButton.setAttribute('aria-expanded',String(opening));
+    contactButton.innerHTML=opening?'Luk formular <span aria-hidden="true">×</span>':'Send mig en besked <span aria-hidden="true">↗</span>';
+    if(opening){const first=contactWrap.querySelector('input[name="name"]');if(first)first.focus({preventScroll:true});contactWrap.scrollIntoView({behavior:'smooth',block:'nearest'});}
+  });
+}
+
 const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const reveals=document.querySelectorAll('[data-reveal]');
 const chapters=document.querySelectorAll('[data-scene]');
