@@ -82,6 +82,7 @@ h1,h2,h3{font-family:"Space Grotesk",sans-serif}
 .socials a{display:inline-flex;align-items:center;gap:11px;border:1px solid var(--border);background:#ffffff06;border-radius:100px;padding:12px 19px;color:#d8e0ee;font-size:13px;transition:background .3s,border-color .3s,transform .3s}
 .socials a:hover{background:#ffffff14;border-color:#91d9ee8a;transform:translateY(-3px)}
 .socials svg{width:17px;height:17px;fill:currentColor}
+.social-placeholder{display:inline-flex;align-items:center;gap:11px;border:1px solid var(--border);background:#ffffff06;border-radius:100px;padding:12px 19px;color:#d8e0ee;font-size:13px;opacity:.65;cursor:default}
 footer{border-top:1px solid var(--border);padding:31px 0 44px;color:var(--muted);display:flex;justify-content:space-between;gap:20px;font-size:12px}
 footer a:hover{color:white}
 /* Reveal effects are enabled only when JavaScript is running; content remains visible otherwise. */
@@ -335,6 +336,9 @@ html.js-animate .is-active .section-head .small-line{transform:scaleX(1)}
   </form>
 </div></div>
 <div class="socials">
+<span class="social-placeholder" aria-disabled="true">LinkedIn <span aria-hidden="true">↗</span></span>
+<span class="social-placeholder" aria-disabled="true">Instagram <span aria-hidden="true">↗</span></span>
+<span class="social-placeholder" aria-disabled="true">Facebook <span aria-hidden="true">↗</span></span>
 <a href="https://github.com/splasher087-max" target="_blank" rel="noopener noreferrer" data-reveal="pop" style="--delay:380ms">GitHub <span aria-hidden="true">↗</span></a>
 </div>
 </section>
